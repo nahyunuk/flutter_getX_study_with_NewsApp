@@ -13,13 +13,13 @@ class NewsViewModel extends GetxController {
   @override
   void onInit(){
     super.onInit();
-    fetchNews();
+    fetchNews('');
   }
 
- Future<void> fetchNews() async {
+ Future<void> fetchNews(String query) async {
     try{
       isLoading.value = true;
-      final fetchedNews = await repository.getNewsArticle();
+      final fetchedNews = await repository.getNewsArticle(query);
       news.value = fetchedNews;
       print(fetchedNews);
     } catch (e){

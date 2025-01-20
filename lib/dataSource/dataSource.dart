@@ -3,12 +3,12 @@ import 'package:http/http.dart' as http;
 import '../model/newsModel.dart';
 
 class DataSource {
-  final String key = 'yourkey';
+  final String key = 'e770157127c1499c94cf89a01917cd1b';
 
-  Future<List<NewsArticle>> getNewsArticleList() async {
+  Future<List<NewsArticle>> getNewsArticleList(String query) async {
     try {
       final response = await http.get(Uri.parse(
-          'https://newsapi.org/v2/everything?q=bitcoin&pageSize=1&apiKey=$key'));
+          'https://newsapi.org/v2/top-headlines?country=us&q=${query}&pageSize=20&apiKey=$key'));
       print(response.body);
 
       if (response.statusCode == 200) {
